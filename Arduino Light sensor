@@ -1,0 +1,37 @@
+int sensorLED = 0 ; // LED as sensor connected to analog pin 0
+int LED = 12 ;// green
+int LED2 = 10;//red
+int LED3 = 8;//yellow
+int LEDval = 0 ;//Variable to store the the LED sensor value
+int Midlight = 150 ;//Threshold level
+int light = 180;
+int LowLight = 100;
+void setup() {
+  pinMode(12,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(8,OUTPUT);
+}
+
+void loop() {
+  LEDval = analogRead(sensorLED);
+  Serial.println(LEDval);
+ 
+    if (LEDval > light ) {              // check if light
+      digitalWrite(LED, HIGH);     // if light, turn on led
+    } else {                     
+      digitalWrite(LED, LOW);    // if dark, turn off led
+    }
+ 
+  if (LEDval > Midlight) {              // check if light
+      digitalWrite(LED3, HIGH);     // if light, turn on led
+    } else {                     
+      digitalWrite(LED3, LOW);    // if dark, turn off led
+    }
+ 
+   
+if (LEDval <= LowLight) {              // check if light
+      digitalWrite(LED2, HIGH);     // if light, turn off led
+    } else {                     
+      digitalWrite(LED2, LOW);    // if dark, turn on led
+    }  
+}
